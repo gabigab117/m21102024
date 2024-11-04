@@ -80,6 +80,28 @@ class Person:
     age: int
 ```
 
+```python
+from dataclasses import dataclass
+
+
+@dataclass(order=True)
+class Person:
+    name: str # En premier
+    age: int # en deuxieme si les premiers sont égaux
+
+p1 = Person("Alice", 30)
+p2 = Person("Bob", 25)
+
+print(p1 == p2)  # Fonctionne
+print(p1 < p2)   # Fonctionne maintenant!
+print(p1 > p2)   # Fonctionne aussi!
+
+# On peut maintenant trier
+people = [Person("Charlie", 35), Person("Alice", 30), Person("Bob", 25)]
+sorted_people = sorted(people)  # Possible seulement avec order=True
+```
+
+
 ## Immutablité
 
 ```python
